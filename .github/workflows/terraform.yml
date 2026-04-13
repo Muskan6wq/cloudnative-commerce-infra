@@ -28,7 +28,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init -input=false
-
+        env: TF_TOKEN_app_terraform_io: ${{ secrets.TFC_TOKEN }}
       - name: Terraform Plan (PR)
         if: github.event_name == 'pull_request'
         run: terraform plan -input=false -detailed-exitcode
