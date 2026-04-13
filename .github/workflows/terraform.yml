@@ -34,11 +34,11 @@ jobs:
         if: github.event_name == 'pull_request'
         run: terraform plan -input=false -detailed-exitcode
 
-      - name: Terraform Apply (Merge)
+     - name: Terraform Apply (Merge)
         if: github.event_name == 'push'
         run: terraform apply -input=false -auto-approve
         env:
-          TF_TOKEN_app_terraform_io: ${{ secrets.TFC_API_TOKEN }}
+          TF_TOKEN_app_terraform_io: ${{ secrets.TFC_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
